@@ -65,13 +65,42 @@ MODEL GRAPH:
 
 
 Program
+~~~
+// Parameters
+Am = 9.6;        // Message amplitude
+Fm = 600;         // Message frequency (Hz)
+B  = 6.3;         // Modulation index
+Ac = 19.2;          // Carrier amplitude
+Fc = 6000;        // Carrier frequency (Hz)
+Fs = 60000;       // Sampling frequency
+T  = 0:1/Fs:2/Fm; // Time vector (two cycles of message)
 
-
+// Message signal
+em = Am * cos(2*%pi*Fm*T);
+subplot(3,1,1);
+plot(T, em);
+xtitle("Message Signal");
+xgrid();
+// Carrier signal
+ec = Ac * cos(2*%pi*Fc*T);
+subplot(3,1,2);
+plot(T, ec);
+xtitle("Carrier Signal");
+xgrid();
+// FM signal
+efm = Ac * cos( (2*%pi*Fc*T) + (B * sin(2*%pi*Fm*T)) );
+subplot(3,1,3);
+plot(T, efm);
+xtitle("FM Signal");
+xgrid();
+~~~
 Output Waveform
+![WhatsApp Image 2025-12-01 at 15 41 21_902e7818](https://github.com/user-attachments/assets/8ff0bb2d-b4f3-4315-95b8-e62606d1cac8)
 
 
 
 Tabulation
+![WhatsApp Image 2025-12-01 at 15 44 42_2745ffbe](https://github.com/user-attachments/assets/704933cf-0740-4862-ae09-a89d077eaeb8)
 
 
 
@@ -79,11 +108,11 @@ Calculation
 
 
 
-Frequency Deviation Practical = 
+Frequency Deviation Practical = 5.88.23Hz
 
-Modulation Index Practical	= 
+Modulation Index Practical	= 2500
 
-Modulation Index Theoretical	=
+Modulation Index Theoretical	=2500
 
 
 
